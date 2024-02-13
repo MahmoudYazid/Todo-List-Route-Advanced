@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark Mode-->
+<resources>
+    <color name="bg_color">#060E1E</color>
+    <color name="TextBlue">#5D9CEC</color>
+</resources>

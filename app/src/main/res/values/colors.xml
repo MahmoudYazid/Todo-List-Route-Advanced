@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Light mode-->
+<resources>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="bg_color">#DFECDB</color>
+    <color name="TextBlue">#5D9CEC</color>
+</resources>
