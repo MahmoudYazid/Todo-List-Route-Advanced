@@ -54,7 +54,7 @@ class TaskFragment : Fragment() {
             obj,obj,obj,obj,obj,obj,obj,obj
         )
 
-        val swipeToDeleteCallback = swipeToDelete()
+        val swipeToDeleteCallback = swipeToDelete(requireContext())
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(Recycler_Tasks)
 
