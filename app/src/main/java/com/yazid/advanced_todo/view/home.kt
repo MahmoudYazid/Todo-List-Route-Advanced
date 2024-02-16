@@ -2,14 +2,21 @@ package com.yazid.advanced_todo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yazid.advanced_todo.R
+import com.yazid.advanced_todo.repo.offline_resources.Room_Functions_Implementation
+import com.yazid.advanced_todo.view_model.ViewModelGeneral
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Date
 import java.util.Locale
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class home : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".dependacy_inj.Application"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Advanced_Todo"
         tools:targetApi="31">
+        <activity
+            android:name=".view.modification_Activity"
+            android:exported="false" />
         <activity
             android:name=".view.Task_Item"
             android:exported="false" />

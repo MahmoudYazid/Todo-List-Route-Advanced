@@ -15,8 +15,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat.recreate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yazid.advanced_todo.R
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
-
+@AndroidEntryPoint
 class optionFrgment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
