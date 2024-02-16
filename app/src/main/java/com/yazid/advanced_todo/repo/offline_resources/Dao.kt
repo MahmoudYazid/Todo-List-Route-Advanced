@@ -10,25 +10,20 @@ import com.yazid.advanced_todo.model.Tasks_Info_Class
 interface Dao {
     @Query("SELECT * FROM tasksDb")
     suspend fun GetAllTasks_dao():List<Tasks_Info_Class>
+    @Query("SELECT * FROM tasksDb WHERE date=:InputDate")
+    suspend fun GetAllTasksInThisDay_dao(InputDate:String):List<Tasks_Info_Class>
 
     @Delete
-    fun deleteTasks_dao(TASK: Tasks_Info_Class)
+    suspend fun deleteTasks_dao(TASK: Tasks_Info_Class)
 
     @Insert
-    fun InsertTasks_dao(TASK: Tasks_Info_Class)
+    suspend fun InsertTasks_dao(TASK: Tasks_Info_Class)
 
-    @Query("UPDATE tasksDb SET task=:newTask WHERE task = :oldtask")
-    fun ModifyTasks_dao(
-        oldtask: String,
-
-        newTask:String)
+    @Query("UPDATE tasksDb SET task = :newTask, date = :newDate WHERE task = :oldTask AND date = :oldDate")
+    fun ModifyTasks_dao(newTask: String, newDate: String, oldTask: String, oldDate: String)
 
 
-    @Query("UPDATE tasksDb SET date=:newDate WHERE date = :olddate")
-    fun ModifyDate_dao(
-        olddate: String,
 
-        newDate:String)
 }
 
 

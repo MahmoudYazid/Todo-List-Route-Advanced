@@ -1,5 +1,6 @@
 package com.yazid.advanced_todo.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
@@ -23,11 +24,14 @@ import com.yazid.advanced_todo.repo.offline_resources.Dao
 import com.yazid.advanced_todo.repo.offline_resources.Room_Functions_Implementation
 import com.yazid.advanced_todo.view.adaptors.DaysAdaptor
 import com.yazid.advanced_todo.view.adaptors.TasksAdaptor
+import com.yazid.advanced_todo.view.interfaces.IDaysTasks
+import com.yazid.advanced_todo.view.interfaces.ITasks_adaptor_Functions
 import com.yazid.advanced_todo.view_model.ViewModelGeneral
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -38,7 +42,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class TaskFragment : Fragment() {
     private val viewmodel:ViewModelGeneral by viewModels()
-
+    val coroutineScope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
@@ -49,15 +53,37 @@ class TaskFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                viewmodel.GetData_ViewModel()
+
+            }
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val View_ = inflater.inflate(R.layout.fragment_task, container, false)
         // days recyclerView
+
         val Recycler_Days = View_.findViewById<RecyclerView>(R.id.DaysRecycler)
-        Recycler_Days.adapter = DaysAdaptor(getNext30Days())
+
+        val DaysAdaptor_inst=DaysAdaptor(getNext30Days(),requireContext())
+        DaysAdaptor_inst.IdaysTasksInst=object :IDaysTasks{
+            override  fun GetTaskofDay(Date: String) {
+                coroutineScope.launch {
+                    viewmodel.GetAllTasksInThisDay_ViewModel(Date)
+
+                }
+            }
+
+
+        }
+        Recycler_Days.adapter = DaysAdaptor_inst
 
 
         // recyclerview Tasks
@@ -69,12 +95,32 @@ class TaskFragment : Fragment() {
 
         val TasksAdaptorInst = TasksAdaptor()
 
-//getData
+        //getData
 
 
         viewmodel.LiveDataTasks.observe(viewLifecycleOwner, Observer { tasks ->
             TasksAdaptorInst.SetData(tasks)
         })
+
+
+
+        // implement functions in adaptor
+        TasksAdaptorInst.InterfaceFunctions=object :ITasks_adaptor_Functions{
+            override fun Delete_Item_in_Adaptor(Task:Tasks_Info_Class) {
+                coroutineScope.launch {
+                    viewmodel.Delete_vm(Task)
+
+                }
+            }
+
+            override fun Go_T_modify_Item_in_Adaptor(Task: Tasks_Info_Class) {
+                val Intent =Intent(requireContext(),modification_Activity::class.java)
+                Intent.putExtra("Task",Task)
+                requireContext().startActivity(Intent)
+            }
+
+        }
+
 
         Recycler_Tasks.adapter = TasksAdaptorInst
 

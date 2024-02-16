@@ -8,5 +8,6 @@ class Date_Card_item : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_card_item)
+
     }
 }

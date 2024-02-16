@@ -1,6 +1,7 @@
 package com.yazid.advanced_todo.view
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.provider.ContactsContract.Data
 import android.util.Log
@@ -18,12 +19,19 @@ import com.yazid.advanced_todo.R
 import com.yazid.advanced_todo.model.Tasks_Info_Class
 import com.yazid.advanced_todo.view_model.ViewModelGeneral
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 @AndroidEntryPoint
 class AddTaskBtmSheet : BottomSheetDialogFragment(),DatePickerDialog.OnDateSetListener {
     var DatePickerData:String="Select a Data"
     private val viewmodel: ViewModelGeneral by viewModels()
+    val coroutineScope = CoroutineScope(Dispatchers.IO)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,21 +64,29 @@ class AddTaskBtmSheet : BottomSheetDialogFragment(),DatePickerDialog.OnDateSetLi
         // add action btm
         val Btm= View_.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         Btm.setOnClickListener{
-            viewmodel.Insert_vm(Tasks_Info_Class(
-                date =TextDatePickerInst.text.toString(),
-                task = TaskText.text.toString(),
-                done_state ="no",
-                id = null
+            coroutineScope.launch {
+                viewmodel.Insert_vm(Tasks_Info_Class(
+                    date =TextDatePickerInst.text.toString(),
+                    task = TaskText.text.toString(),
+                    done_state ="no",
+                    id = null
 
-            ))
+                ))
+                viewmodel.GetData_ViewModel()
+
+                dismiss()
+
+
+            }
+
         }
 
         return View_
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, Day: Int) {
-
-        this.DatePickerData= "$Day-$month-$year"
+        val monthM:Int  =month+1
+        this.DatePickerData= "$Day-$monthM-$year"
 
         ChangeDataAfterPick(requireView())
 
