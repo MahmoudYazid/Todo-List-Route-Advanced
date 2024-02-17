@@ -24,6 +24,9 @@ interface Dao {
 
 
 
+    @Query("UPDATE tasksDb SET done_state = :StateInput_ WHERE task = :TaskInput_ AND date = :DateInput_")
+    fun MakeTaskState_dao(TaskInput_: String, DateInput_: String,StateInput_:String)
+
 }
 
 

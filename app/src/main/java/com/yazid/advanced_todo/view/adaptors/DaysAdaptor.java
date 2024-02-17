@@ -1,5 +1,6 @@
 package com.yazid.advanced_todo.view.adaptors;
 
+
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -58,18 +59,18 @@ public class DaysAdaptor extends RecyclerView.Adapter<DaysAdaptor.ViewHolder>{
                 String Taredate = DaysList.get(currentPosition).getDay().toString() + "-" + DaysList.get(currentPosition).getMonth().toString() + "-" + DaysList.get(currentPosition).getYear().toString();
                 IdaysTasksInst.GetTaskofDay(Taredate);
 
-                // Change background color of selected item
-                view.setBackgroundColor(Color.GREEN);
 
-                // Reset background color of previously selected item if any
+                // Change background color of selected item
+                view.setBackgroundColor(Color.CYAN);
                 if (previousSelectedItem != null && previousSelectedItem != view) {
                     previousSelectedItem.setBackgroundColor(Color.WHITE);
                 }
+                // Reset background color of previously selected item if any
+
 
                 // Update previousSelectedItem to current selected item
                 previousSelectedItem = view;
 
-                Toast.makeText(context_,Taredate,Toast.LENGTH_LONG).show();
             }
         });
 

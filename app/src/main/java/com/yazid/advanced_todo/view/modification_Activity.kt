@@ -1,6 +1,7 @@
 package com.yazid.advanced_todo.view
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -50,6 +51,8 @@ class modification_Activity : AppCompatActivity(), DatePickerDialog.OnDateSetLis
 
             val datePickerDialog = DatePickerDialog(this, this, year, month, Day)
             datePickerDialog.datePicker.minDate = calender.timeInMillis
+            datePickerDialog.datePicker.setBackgroundColor(Color.WHITE);
+
             datePickerDialog.show()
 
 

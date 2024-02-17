@@ -45,24 +45,10 @@ class TaskFragment : Fragment() {
     val coroutineScope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                viewmodel.GetData_ViewModel()
 
-            }
-        }
     }
 
-    override fun onResume() {
-        super.onResume()
 
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                viewmodel.GetData_ViewModel()
-
-            }
-        }
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,6 +63,10 @@ class TaskFragment : Fragment() {
             override  fun GetTaskofDay(Date: String) {
                 coroutineScope.launch {
                     viewmodel.GetAllTasksInThisDay_ViewModel(Date)
+                    withContext(Dispatchers.Main){
+                        viewmodel.SelectedDate.value=Date
+                    }
+
 
                 }
             }
@@ -93,7 +83,7 @@ class TaskFragment : Fragment() {
 
 
 
-        val TasksAdaptorInst = TasksAdaptor()
+        val TasksAdaptorInst = TasksAdaptor(requireContext())
 
         //getData
 
@@ -118,6 +108,18 @@ class TaskFragment : Fragment() {
                 Intent.putExtra("Task",Task)
                 requireContext().startActivity(Intent)
             }
+
+            override fun SetTaskState_Adaptor(Task: Tasks_Info_Class,State:String) {
+                coroutineScope.launch {
+                    viewmodel.SetTaskState_vm(
+
+                        Task_ =  Task,
+                        state_ = State
+                        )
+
+                }
+            }
+
 
         }
 

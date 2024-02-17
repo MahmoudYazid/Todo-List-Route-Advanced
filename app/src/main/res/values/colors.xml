@@ -5,4 +5,5 @@
     <color name="whiteColor">#FFFFFF</color>
     <color name="bg_color">#DFECDB</color>
     <color name="TextBlue">#5D9CEC</color>
+    <color name="TextSpinner">#000000</color>
 </resources>

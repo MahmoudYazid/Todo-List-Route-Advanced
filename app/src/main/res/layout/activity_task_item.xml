@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zerobranch.layout.SwipeLayout
+    android:layout_marginHorizontal="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_layout"
@@ -40,6 +41,7 @@
 </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="horizontal"
+
         android:id="@+id/drag_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,6 +72,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:textColor="?android:textColorPrimary"
             android:text="Your long text goes here..."
             />
         <ImageView
@@ -86,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/timeicon"
-
+            android:textColor="?android:textColorPrimary"
             android:layout_width="0dp"
             android:layout_marginLeft="10dp"
             android:text="mmmmmmm"

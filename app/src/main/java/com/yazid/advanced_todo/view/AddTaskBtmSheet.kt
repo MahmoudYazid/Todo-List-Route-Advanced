@@ -2,6 +2,7 @@ package com.yazid.advanced_todo.view
 
 import android.app.DatePickerDialog
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.ContactsContract.Data
 import android.util.Log
@@ -53,7 +54,7 @@ class AddTaskBtmSheet : BottomSheetDialogFragment(),DatePickerDialog.OnDateSetLi
 
             val datePickerDialog = DatePickerDialog(requireContext(), this, year, month, Day)
             datePickerDialog.datePicker.minDate = calender.timeInMillis
-
+            datePickerDialog.datePicker.setBackgroundColor(Color.WHITE);
             datePickerDialog.show()
 
 

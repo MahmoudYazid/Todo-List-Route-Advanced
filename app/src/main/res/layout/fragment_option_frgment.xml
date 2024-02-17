@@ -58,12 +58,13 @@
 
         <Spinner
             android:id="@+id/LanguageSpinner"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/TextBlue"
             android:layout_width="319dp"
             android:layout_height="48dp"
             android:layout_marginLeft="37dp"
             android:layout_marginRight="37dp"
             android:layout_marginTop="19dp"
+            android:popupBackground="@color/whiteColor"
 
             android:background="@drawable/spinnerstyle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,15 +82,15 @@
             app:layout_constraintTop_toBottomOf="@id/LanguageSpinner" />
 
 
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/ModeSpinner"
-            android:textColor="#FFFFFF"
+            android:textColor = "@color/TextSpinner"
             android:layout_width="319dp"
             android:layout_height="48dp"
             android:layout_marginLeft="37dp"
             android:layout_marginRight="37dp"
             android:layout_marginTop="19dp"
-
+            android:popupBackground="@color/whiteColor"
             android:background="@drawable/spinnerstyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

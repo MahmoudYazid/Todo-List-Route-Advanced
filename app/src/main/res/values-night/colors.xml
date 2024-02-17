@@ -3,4 +3,8 @@
 <resources>
     <color name="bg_color">#060E1E</color>
     <color name="TextBlue">#5D9CEC</color>
+
+    <color name="TextSpinner">#000000</color>
+    <color name="whiteColor">#FFFFFF</color>
+
 </resources>

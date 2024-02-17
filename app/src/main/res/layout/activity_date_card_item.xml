@@ -8,6 +8,7 @@
     tools:context=".view.Date_Card_item">
 
 <androidx.cardview.widget.CardView
+    app:cardBackgroundColor="@color/whiteColor"
     android:id="@+id/DateCart"
     android:layout_width="58dp"
     android:layout_marginRight="21dp"
@@ -20,7 +21,7 @@
     <LinearLayout
         android:layout_width="58dp"
         android:layout_height="79dp"
-
+android:background="@color/whiteColor"
         android:orientation="vertical"
         android:gravity="center_vertical"
 
@@ -29,6 +30,7 @@
 
         <!-- Add your content here, such as TextViews, ImageViews, etc. -->
         <TextView
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/DayText"
@@ -37,6 +39,7 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/MonthText"
@@ -45,6 +48,7 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/yearText"

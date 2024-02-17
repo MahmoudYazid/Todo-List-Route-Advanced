@@ -45,11 +45,14 @@
                 android:layout_marginRight="37dp"
                 android:background="@drawable/spinnerstyle"
 
-                android:textColor="@color/TextBlue"
+                android:textColor="?android:textColorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                android:hint="Enter Your Task" />
+                android:hint="Enter Your Task"
+                android:textColorHint="?android:textColorPrimary"
+
+                />
 
             <TextView
                 android:id="@+id/DatePickerClickText"
