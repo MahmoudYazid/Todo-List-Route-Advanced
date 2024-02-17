@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Advanced_Todo</string>
+    <string name="app_name">Advanced Todo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="Language">
         <item>Select item</item>

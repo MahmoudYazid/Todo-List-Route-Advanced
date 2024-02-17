@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Advanced_Todo</string>
+    <string name="app_name">Advanced Todo</string>
     <string-array name="Language">
         <item>Select item</item>
         <item>Arabic</item>

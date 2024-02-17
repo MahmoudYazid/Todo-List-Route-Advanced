@@ -34,11 +34,7 @@ class optionFrgment : Fragment() {
 
 
 
-        val Spinner = View.findViewById<Spinner>(R.id.LanguageSpinner)
-        val LanguageArrayAdaptor=ArrayAdapter.createFromResource(requireContext(),R.array.Language,android.R.layout.simple_spinner_item)
-        LanguageArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_item)
 
-        Spinner.adapter = LanguageArrayAdaptor
 
 
         // define second spinner
