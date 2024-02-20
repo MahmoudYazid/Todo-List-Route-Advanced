@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -41,7 +42,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class TaskFragment : Fragment() {
-    private val viewmodel:ViewModelGeneral by viewModels()
+    private val viewmodel:ViewModelGeneral by activityViewModels()
     val coroutineScope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

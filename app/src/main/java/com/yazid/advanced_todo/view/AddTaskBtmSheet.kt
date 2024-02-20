@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,7 +30,7 @@ import java.util.Calendar
 @AndroidEntryPoint
 class AddTaskBtmSheet : BottomSheetDialogFragment(),DatePickerDialog.OnDateSetListener {
     var DatePickerData:String="Select a Data"
-    private val viewmodel: ViewModelGeneral by viewModels()
+    private val viewmodel: ViewModelGeneral by activityViewModels()
     val coroutineScope = CoroutineScope(Dispatchers.IO)
 
 
